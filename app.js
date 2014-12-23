@@ -56,10 +56,57 @@
 }).call(this);
 
 (function() {
-  var v, v4;
+  var Armory, armory, armoryIsOpen, isKnight, result1, result2, result3, weapon;
 
-  v = 3;
+  Armory = (function() {
+    function Armory() {}
 
-  v4 = 22;
+    Armory.prototype.retrieveSword = function(request) {
+      if (this.swords.indexOf(request) >= 0) {
+        return this.swords.splice(this.swords.indexOf(request), 1)[0];
+      } else {
+        return console.log("No " + request + ", baby!");
+      }
+    };
+
+    Armory.prototype.bat = 10;
+
+    Armory.prototype.addSword = function(sword) {
+      this.swords = this.swords || [];
+      return this.swords.push(sword);
+    };
+
+    return Armory;
+
+  })();
+
+  armory = new Armory();
+
+  armory.addSword("Excalibor");
+
+  armory.addSword("Claymore");
+
+  armoryIsOpen = true;
+
+  isKnight = true;
+
+  weapon = armoryIsOpen && isKnight && armory.retrieveSword("Katana");
+
+  console.log(weapon);
+
+  result1 = void 0 && 42;
+
+  console.log(result1);
+
+  result2 = 0 && ['Sweet', 'array'];
+
+  console.log(result2);
+
+  result3 = "" && {
+    type: "ring",
+    stone: "diamond"
+  };
+
+  console.log(result3);
 
 }).call(this);
