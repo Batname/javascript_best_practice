@@ -56,6 +56,8 @@
 }).call(this);
 
 (function() {
+  var v;
 
+  v = 3;
 
 }).call(this);
