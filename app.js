@@ -56,8 +56,10 @@
 }).call(this);
 
 (function() {
-  var v;
+  var v, v4;
 
   v = 3;
+
+  v4 = 22;
 
 }).call(this);
