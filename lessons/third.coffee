@@ -10,6 +10,7 @@ class Armory
 armory = new Armory()
 armory.addSword "Excalibor"
 armory.addSword "Claymore"
+armory.addSword "LongSord"
 
 armoryIsOpen = true
 isKnight = true

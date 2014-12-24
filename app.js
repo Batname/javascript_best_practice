@@ -22,6 +22,101 @@
 }).call(this);
 
 (function() {
+  var basketModule;
+
+  basketModule = (function() {
+    var basket;
+    basket = [];
+    return {
+      addItem: function(values) {
+        basket.push(values);
+      },
+      getItemCount: function() {
+        return basket.length;
+      },
+      getTotal: function() {
+        var p, q;
+        q = this.getItemCount();
+        p = 0;
+        while (q--) {
+          p += basket[q].price;
+        }
+        return p;
+      }
+    };
+  }).call(this);
+
+  basketModule.addItem({
+    item: "bread",
+    price: 0.5
+  });
+
+  basketModule.addItem({
+    item: "butter",
+    price: 0.3
+  });
+
+  console.log(basketModule.getItemCount());
+
+  console.log(basketModule.getTotal());
+
+}).call(this);
+
+(function() {
+  var SignalFire, fireOne, fireThree, fireTwo;
+
+  SignalFire = function(ID, startingLogs) {
+    this.fireID = ID;
+    this.logsLeft = startingLogs;
+  };
+
+  SignalFire.prototype = {
+    addLogs: function(numLogs) {
+      this.logsLeft += numLogs;
+    },
+    lightFire: function() {
+      console.log("Whoooosh!");
+    },
+    smokeSignal: function() {
+      var i, x;
+      if (this.logStatus < this.message.length / 10) {
+        console.log("Not enough fuel to send " + "the current message!");
+      } else {
+        this.lightFire();
+        x = this.message.length;
+        i = 0;
+        while (i < x) {
+          console.log("(((" + this.message[i] + ")))");
+          if (i % 10 === 0 && i !== 0) {
+            this.logsLeft--;
+          }
+          i++;
+        }
+      }
+    }
+  };
+
+  fireOne = new SignalFire(1, 20);
+
+  fireTwo = new SignalFire(2, 18);
+
+  fireThree = new SignalFire(3, 24);
+
+  fireOne.addLogs(8);
+
+  fireTwo.addLogs(10);
+
+  fireThree.addLogs(4);
+
+  console.log(fireOne.logsLeft);
+
+  console.log(fireTwo.logsLeft);
+
+  console.log(fireThree.logsLeft);
+
+}).call(this);
+
+(function() {
   var armory, armoryIsOpen, isKnight, weapon;
 
   armory = {
@@ -85,6 +180,8 @@
   armory.addSword("Excalibor");
 
   armory.addSword("Claymore");
+
+  armory.addSword("LongSord");
 
   armoryIsOpen = true;
 
